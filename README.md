@@ -91,7 +91,7 @@ INPUT( X * WEIGHT ) ----> LINEAR (Z = X * WEIGHT + BIAS) ----> ACTIVATION( SIGMO
 ```python
 params = {'b' : np.zeros((ny, 1)), 'W' : np.zeros((ny, nx)) }
 
-. nx is the size of features in matrix X
+. nx is the features size of X matrix
 . ny is the ouput size in this case ny = 1
 ```
 ```For a single neuron we can initialise the bias to 0.0 and weight to np.zeros((1, nx))```
