@@ -89,14 +89,17 @@ INPUT( X * WEIGHT ) ----> LINEAR (Z = X * WEIGHT + BIAS) ----> ACTIVATION( SIGMO
 
 ## __```Initialization :```__
 ```python
-params = {'b' : np.zeros((NL, 1)), 'W' : np.zeros((1, n)) }
+params = {'b' : np.zeros((ny, 1)), 'W' : np.zeros((ny, nx)) }
+
+. nx is the size of features in matrix X
+. ny is the ouput size in this case ny = 1
 ```
+```For a single neuron we can initialise the bias to 0.0 and weight to np.zeros((1, nx))```
 
 ## ```What we will do here :```
-
+ - Building our dnn model (LogisticRegression)
  - Loading data from sklearn(cancer dataset)
  - Data preprocessing( **cleaning, normalization**)
- - Building our dnn model (LogisticRegression)
  - Train model
  - Test model
  - Computing metrics to se how our model has performed
