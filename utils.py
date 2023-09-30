@@ -1,4 +1,44 @@
 import numpy as np 
+import h5py
+import matplotlib.pyplot as plt
+
+def url_img_read( url : str, show_img : str = False):
+    from PIL import Image
+    import requests
+    from io import BytesIO
+    import numpy as np 
+    import time
+
+    image = None
+    # Replace 'url' with the URL of the image you want to read
+
+    try:
+        start = time.time()
+        response = requests.get(url)
+        # Check if the request was successful
+        if response.status_code == 200:
+            # Read the image from the response content
+            image_data = BytesIO(response.content)
+            image = Image.open(image_data) #Image.open(image_data)
+
+            # You can now work with the 'image' object (e.g., display or process it)
+            # For example, you can display the image:
+            image = np.array(image).astype(np.float32) / 255 
+            if show_img : 
+                plt.figure(figsize=(2, 2))
+                plt.imshow(image, interpolation="nearest", cmap="plasma")
+                plt.axis('off')
+                plt.show()
+        else:
+            print(f"Failed to retrieve image. Status code: {response.status_code}")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+
+    end = time.time()
+
+    print(f"response time : {np.round( end-start, 4 )}s")
+
+    return image
 
 def generate_inputs_test(nx : int, ny : int = 1, samples : int = 100):
 
@@ -42,6 +82,21 @@ def initialize_adam(params : dict = {}) :
     
     return v, s
 
+def load_dataset(path : str  ='./datasets'):
+    train_dataset = h5py.File(f'{path}/train_catvnoncat.h5', "r")
+    train_set_x_orig = np.array(train_dataset["train_set_x"][:]) # your train set features
+    train_set_y_orig = np.array(train_dataset["train_set_y"][:]) # your train set labels
+
+    test_dataset = h5py.File(f'{path}/test_catvnoncat.h5', "r")
+    test_set_x_orig = np.array(test_dataset["test_set_x"][:]) # your test set features
+    test_set_y_orig = np.array(test_dataset["test_set_y"][:]) # your test set labels
+
+    classes = np.array(test_dataset["list_classes"][:]) # the list of classes
+    
+    train_set_y_orig = train_set_y_orig.reshape((1, train_set_y_orig.shape[0]))
+    test_set_y_orig = test_set_y_orig.reshape((1, test_set_y_orig.shape[0]))
+    
+    return train_set_x_orig, train_set_y_orig, test_set_x_orig, test_set_y_orig, classes
 
 def adam(
         params  : dict , 
