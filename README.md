@@ -59,7 +59,7 @@ f(x) = np.maximum( 0.1, x )
   2. loss = - ( (1-y) * log(1-g) + y * log(g) ) 
      is the loss function 
 
-  3. loss = - (1/m) * ( (1-y) * log(1-g) + y * log(g) ).sum(axis=1) 
+  3. cost = - (1/m) * ( (1-y) * log(1-g) + y * log(g) ).sum(axis=1) -----> cost = avg(loss)
      is the cost function use to compute the gradient and optimize weights and biases 
 
   << This form of cost function is called **binary cross entropy** >>
