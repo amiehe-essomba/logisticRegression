@@ -35,7 +35,7 @@ f(x) = 1 / (1 + np.exp(-x))
 f(xi) = np.exp(-xi) / np.sum( np.exp(-x), axis=0 )
 ```
 
-* __LeakyRelU function__ 
+* __LeakyReLU function__ 
 ```python
 f(x) = np.maximum( 0.1, x )
 ```
