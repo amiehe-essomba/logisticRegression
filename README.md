@@ -109,7 +109,7 @@ params = {'b' : np.zeros((ny, 1)), 'W' : np.zeros((ny, nx)) }
 . nx is the features size of X matrix
 . ny is the ouput size. In this case ny = 1 (True || False)
 ```
-```For a single neuron we can initialise the bias to 0.0 and weight as np.zeros((ny, nx))```
+```For a single neuron we can initialise the bias to np.zeros((1,1)) and weight as np.zeros((ny, nx))```
 
 ## ```What we will do here :```
  - Building our deep neural network model(dnn) with one neuron using sigmoid function as activation function (LogisticRegression)
