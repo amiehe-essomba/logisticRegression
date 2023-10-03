@@ -69,7 +69,7 @@ f(x) = np.maximum( 0.1, x )
 
 ```python 
    
-   Two equations are used to propagete the gradient (Eq.1 & Eq.2):  
+   Two equations are used to propagate the gradient (Eq.1 & Eq.2):  
    
    dw = dg * (dg/dz) * (dz/dw) = (1/m) *  X * ( g - a ).T    (Eq.1)
    db = dg * (dg/dz) * (dz/db) = (1/m).sum( g - a )          (Eq.2)
