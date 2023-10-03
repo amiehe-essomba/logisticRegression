@@ -105,6 +105,7 @@ INPUT( X * WEIGHT )--+--> LINEAR (Z = X.T * WEIGHT + BIAS) ----> ACTIVATION( SIG
 ## __```Initialization :```__
 ```python
 params = {'b' : np.zeros((ny, 1)), 'W' : np.zeros((ny, nx)) }
+Do not forget in this case ny = 1 (output layer)
 
 . nx is the features size of X matrix
 . ny is the ouput size. In this case ny = 1 (True || False)
