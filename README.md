@@ -95,9 +95,9 @@ f(x) = np.maximum( 0.1, x )
                                     Forward Propagation (w & b)
           +----------->------------->---------->----------->----------------------------+
           |                                                                             |             1 if p > 0.5 else 0           
-INPUT( X * WEIGHT ) ----> LINEAR (Z = X.T * WEIGHT + BIAS) ----> ACTIVATION( SIGMOID(Z) ) ---> OUTPUT( Y[ idx([p, 1 - p]) ] )
-          |                                                                             |                
-          +------<-----------------<-----------------------<-------------------<--------+
+INPUT( X * WEIGHT )--+--> LINEAR (Z = X.T * WEIGHT + BIAS) ----> ACTIVATION( SIGMOID(Z) ) ---> OUTPUT( Y[ idx([p, 1 - p]) ] )
+                     |                                                                  |                
+                     +-------------<-----------------------<-------------------<--------+
                                     Backward Propagation (dw & db)
 
 ```
